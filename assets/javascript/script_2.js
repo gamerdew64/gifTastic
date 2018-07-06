@@ -3,8 +3,7 @@ var teams = ["Boston Celtics", "Chicago Bulls", "Dallas Mavericks", "Detroit Pis
 "New Orleans Pelicans", "Oklahoma City Thunder", "Philadelphia 76ers", "Portland Trail Blazers", "San Antonio Spurs", "Utah Jazz"];
 
 // Adding click event listen listener to all buttons
-$("button").on("click", function()
-{
+$("button").on("click", function() {
   // Grabbing and storing the data-team property value from the button
   var team = $(this).attr("data-team");
 
@@ -18,13 +17,29 @@ $("button").on("click", function()
     method: "GET"
   })
     // After data comes back from the request
-    .then(function(response)
-    {
+    .then(function(response) {
       console.log(queryURL);
       console.log(response);
 
       // storing the data from the AJAX request in the results variable
       var results = response.data;
+
+
+
+
+
+// ========================================================================================================================
+      // Function for displaying movie data
+      function renderButtons()
+      {
+        // Deleting the movies prior to adding new movies
+        // (this is necessary otherwise you will have repeat buttons)
+        $("#buttons-view").empty();
+// ========================================================================================================================
+
+
+
+
 
       // Looping through each result item
       for (var i = 0; i < results.length; i++)
@@ -32,6 +47,45 @@ $("button").on("click", function()
 
         // Creating and storing a div tag
         var teamDiv = $("<div>");
+
+
+
+
+// THE FOLLOWING FIVE LINES (SANS COMMENTS) ARE REGARDING NEW BUTTONS GETTING ADDED TO PAGE --- NOT YET WORKING
+// ========================================================================================================================
+        // Then dynamicaly generating buttons for each movie in the array
+        // This code $("<button>") is all jQuery needs to create the beginning and end tag. (<button></button>)
+        var newButton = $("<button>");
+
+        // Adding a class of team-btn to our button
+        newButton.addClass("team-btn");
+
+        // Adding a data-attribute
+        newButton.attr("data-name", teams[i]);
+
+        // Providing the initial button text
+        newButton.text(teams[i]);
+
+        // Adding the button to the buttons-view div
+        $("#buttons-view").append(newButton);
+
+      }
+    }
+// ========================================================================================================================
+
+    // This function handles events where a movie button is clicked
+    $("#add-team").on("click", function(event) {
+      event.preventDefault();
+      // This line grabs the input from the textbox
+      var movie = $("#team-input").val().trim();
+
+      // Adding movie from the textbox to our array
+      movies.push(movie);
+
+      // Calling renderButtons which handles the processing of our movie array
+      renderButtons();
+    });
+
 
         // Creating a paragraph tag with the result GIF's title
         var pTitle = $("<p>").text("Gif Title: " + results[i].title);
@@ -47,6 +101,11 @@ $("button").on("click", function()
 
         // Setting the src attribute of the image to a property pulled off the result item
         teamImage.attr("src", results[i].images.fixed_height.url);
+
+
+
+
+
 
 
 // THE FOLLOWING SECTION IS REGARDING THE TOGGLING OF ACTIVE AND NON-ACTIVE GIF STATES --- NOT YET WORKING
@@ -78,6 +137,8 @@ $("button").on("click", function()
         });
 // ========================================================================================================================
 
+
+
         // Appending the paragraph and image tag to the teamDiv
         teamDiv.append(pTitle);
         teamDiv.append(pUrl);
@@ -86,6 +147,6 @@ $("button").on("click", function()
 
         // Prependng the teamDiv to the HTML page in the "#gifsDiv" div
         $("#gifsDiv").prepend(teamDiv);
-    }
-  });
+        renderButtons();
+    });
 });
