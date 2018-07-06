@@ -4,41 +4,45 @@
 <head>
   <meta charset="utf-8">
   <title>Giftastic Animation</title>
+  <!-- Google Fonts -->
+  <!-- Link to custom Google Fonts to make the text more unique -->
+  <link href="https://fonts.googleapis.com/css?family=Play" rel="stylesheet">
+  <!-- CSS - Game Styling -->
+  <!-- Link to CSS file for custom styling - no bootstrap -->
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
 </head>
 
 <body>
-  <!-- <button data-team="Atlanta Hawks">Atlanta Hawks</button> -->
-  <button class="gif" data-team="Boston Celtics">Brooklyn Nets</button>
-  <!-- <button data-team="Charlotte Hornets">Charlotte Hornets</button> -->
-  <button class="gif" data-team="Chicago Bulls">Chicago Bulls</button>
-  <!-- <button data-team="Cleveland Cavaliers">Cleveland Cavaliers</button> -->
-  <button class="gif" data-team="Dallas Mavericks">Dallas Mavericks</button>
-  <!-- <button data-team="Denver Nuggets">Denver Nuggets</button> -->
-  <button class="gif" data-team="Detroit Pistons">Detroit Pistons</button>
-  <!-- <button data-team="Golden State Warriors">Golden State Warriors</button> -->
-  <button class="gif" data-team="Houston Rockets">Houston Rockets</button>
-  <!-- <button data-team="Indiana Pacers">Indiana Pacers</button> -->
-  <button class="gif" data-team="Los Angeles Clippers">Los Angeles Clippers</button>
-  <!-- <button data-team="Los Angeles Lakers">Los Angeles Lakers</button> -->
-  <button class="gif" data-team="Memphis Grizzlies">Memphis Grizzlies</button>
-  <!-- <button data-team="Miami Heat">Miami Heat</button> -->
-  <button class="gif" data-team="Milwaukee Bucks">Milwaukee Bucks</button>
-  <!-- <button data-team="Minnesota Timberwolves">Minnesota Timberwolves</button> -->
-  <button class="gif" data-team="New Orleans Pelicans">New Orleans Pelicans</button>
-  <!-- <button data-team="New York Knicks">New York Knicks</button> -->
-  <button class="gif" data-team="Oklahoma City Thunder">Oklahoma City Thunder</button>
-  <!-- <button data-team="Orlando Magic">Orlando Magic</button> -->
-  <button class="gif" data-team="Philadelphia 76ers">Philadelphia 76ers</button>
-  <!-- <button data-team="Phoenix Suns">Phoenix Suns</button> -->
-  <button class="gif" data-team="Portland Trail Blazers">Portland Trail Blazers</button>
-  <!-- <button data-team="Sacramento Kings">Sacramento Kings</button> -->
-  <button class="gif" data-team="San Antonio Spurs">San Antonio Spurs</button>
-  <!-- <button data-team="Toronto Raptors">Toronto Raptors</button> -->
-  <button class="gif" data-team="Utah Jazz">Utah Jazz</button>
-  <!-- <button data-team="Washington Wizards">Washington Wizards</button> -->
 
-  <div id="gifsDiv">
-  </div>
+  <!-- Inital buttons available to the end user -->
+  <!-- Each button corresponds to GIFs pertaining to an NBA team -->
+  <button class="gif" data-team="Boston Celtics">Brooklyn Nets</button>
+  <button class="gif" data-team="Chicago Bulls">Chicago Bulls</button>
+  <button class="gif" data-team="Dallas Mavericks">Dallas Mavericks</button>
+  <button class="gif" data-team="Detroit Pistons">Detroit Pistons</button>
+  <button class="gif" data-team="Houston Rockets">Houston Rockets</button>
+  <button class="gif" data-team="New Orleans Pelicans">New Orleans Pelicans</button>
+  <button class="gif" data-team="Philadelphia 76ers">Philadelphia 76ers</button>
+  <button class="gif" data-team="San Antonio Spurs">San Antonio Spurs</button>
+
+  <!-- This is the div containing the collection of the buttons that correspond to various NBA teams -->
+  <div id="teamButtons"></div>
+  <!-- This is the form in which the end user can manually type a team to enter if they do not see it on the page -->
+  <form id="team-form">
+    <!-- This is the label that shows in the text box -->
+    <label for="team-input">Add a Team</label>
+    <!-- This is the type of input being collected - validation -->
+    <input type="text" id="team-input">
+    <!-- Single line break goes here -->
+    <br>
+
+    <!-- Button triggers new team to be added -->
+    <input id="add-team" type="submit" value="Add a Team">
+  </form>
+
+  <!-- This is the div where the gifs will be dumped/displayed -->
+  <div id="gifsDiv"></div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript" src="assets/javascript/script.js"></script>
 </body>

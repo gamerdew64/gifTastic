@@ -10,7 +10,7 @@ $("button").on("click", function()
 
   // Constructing a queryURL using the team name
   var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
-    team + "&api_key=dc6zaTOxFJmzC&limit=5";
+    team + "&api_key=dc6zaTOxFJmzC&limit=10";
 
   // Performing an AJAX request with the queryURL
   $.ajax({
